@@ -1,9 +1,14 @@
 import axios from 'axios';
+
 const API = process.env.REACT_APP_API || 'http://localhost:5000';
+
+// Debug log to check which API endpoint is used
+console.log(`🔗 API Base URL: ${API}`);
 
 export function setToken(token) { 
   localStorage.setItem('token', token); 
 }
+
 export function getToken() { 
   return localStorage.getItem('token'); 
 }
@@ -11,6 +16,7 @@ export function getToken() {
 export async function register(username, password) {
   return axios.post(`${API}/api/auth/register`, { username, password });
 }
+
 export async function login(username, password) {
   return axios.post(`${API}/api/auth/login`, { username, password });
 }
